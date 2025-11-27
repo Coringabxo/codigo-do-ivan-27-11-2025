@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="crud_Colmeia.ColmeiaListController"
+            prefWidth="1400"
+            prefHeight="700"
+            stylesheets="@/globalStyle/style.css">
+
+    <VBox spacing="15" alignment="CENTER">
+        <padding>
+            <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+
+        <children>
+            <!-- Cabeçalho CENTRALIZADO -->
+            <HBox spacing="20" alignment="CENTER">
+                <Label text="🏭 Gerenciamento de Energéticos" 
+                       style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #ffffff;"/>
+                
+                <Region HBox.hgrow="ALWAYS"/>
+                
+                <Button text="🔄 Atualizar" onAction="#atualizarTabela" 
+                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 15;"/>
+            </HBox>
+
+            <!-- Tabela Ampliada - MANTIDA ORIGINAL -->
+            <TableView fx:id="tableEnergetico" VBox.vgrow="ALWAYS">
+                <columns>
+                    <!-- Colunas Básicas -->
+                    <TableColumn fx:id="colId" text="ID" prefWidth="40"/>
+                    <TableColumn fx:id="colIdentificacao" text="Produto" prefWidth="150"/>
+                    <TableColumn fx:id="colTipo" text="Tipo" prefWidth="100"/>
+                    <TableColumn fx:id="colCategoria" text="Categoria" prefWidth="120"/>
+                    
+                    <!-- Colunas Financeiras -->
+                    <TableColumn fx:id="colPrecoCusto" text="Custo" prefWidth="80"/>
+                    <TableColumn fx:id="colPrecoVenda" text="Venda" prefWidth="80"/>
+                    
+                    <!-- Colunas de Estoque -->
+                    <TableColumn fx:id="colEstoqueAtual" text="Estoque" prefWidth="70"/>
+                    <TableColumn fx:id="colEstoqueMinimo" text="Est. Min" prefWidth="70"/>
+                    
+                    <!-- Colunas de Localização -->
+                    <TableColumn fx:id="colLocalizacao" text="Localização" prefWidth="120"/>
+                    
+                    <!-- Colunas de Fornecedor -->
+                    <TableColumn fx:id="colFornecedor" text="Fornecedor" prefWidth="120"/>
+                    <TableColumn fx:id="colCodigoBarras" text="Cód. Barras" prefWidth="120"/>
+                    
+                    <!-- Colunas de Status -->
+                    <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+                    <TableColumn fx:id="colData" text="Data Cadastro" prefWidth="110"/>
+                    <TableColumn fx:id="colQuadros" text="Nº Quadros" prefWidth="90"/>
+                </columns>
+            </TableView>
+
+            <!-- Barra de Ferramentas CENTRALIZADA -->
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="➕ Cadastrar Novo" onAction="#abrirCadastro" 
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;"/>
+                
+                <Button text="📦 Importar em Lote" onAction="#abrirImportacaoLote" 
+                        style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;"/>
+                
+                <Button text="✏️ Editar" onAction="#editarColmeia" 
+                        style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;"/>
+                
+                <Button text="🗑️ Excluir" onAction="#excluirColmeia" 
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;"/>
+            </HBox>
+
+            <!-- Rodapé Informativo CENTRALIZADO -->
+            <HBox spacing="20" alignment="CENTER">
+                <Label text="🎯 Dica: Clique duas vezes em uma linha para editar rapidamente" 
+                       style="-fx-text-fill: #cccccc; -fx-font-style: italic;"/>
+            </HBox>
+        </children>
+    </VBox>
+</AnchorPane>

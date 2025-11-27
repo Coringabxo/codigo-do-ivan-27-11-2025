@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="crud_Colmeia.ColmeiaEditController"
+            prefWidth="600" prefHeight="450">
+    
+    <VBox spacing="15" alignment="TOP_LEFT" layoutX="20" layoutY="20" prefWidth="560">
+        <children>
+
+            <Label fx:id="labelTitulo" text="Edição de Energetico" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #faf5f5;" />
+
+            <HBox spacing="10">
+                <Label text="Identificação:" />
+                <TextField fx:id="txtNumero" promptText="Ex: Energetico 1" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Data de Instalação:" />
+                <DatePicker fx:id="dateInstalacao" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Localização:" />
+                <TextField fx:id="txtLocalizacao" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Tipo de Caixa:" />
+                <ComboBox fx:id="comboTipo" promptText="Selecione o tipo" prefWidth="200"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Número de Quadros:" />
+                <Spinner fx:id="spinnerNumeroQuadros" prefWidth="100" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Situação:" />
+                <ComboBox fx:id="comboSituacao" promptText="Selecione uma opção" />
+            </HBox>
+
+            <VBox spacing="5">
+                <Label text="Observações:" />
+                <TextArea fx:id="txtObservacoes" prefRowCount="4" />
+            </VBox>
+
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="Salvar" onAction="#salvarColmeia" />
+                <Button text="Limpar" onAction="#limparCampos" />
+                <Button text="Cancelar" onAction="#cancelarEdicao" />
+            </HBox>
+
+        </children>
+
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20" />
+        </padding>
+    </VBox>
+</AnchorPane>

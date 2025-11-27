@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tela_main_controller.LoginController"
+            stylesheets="@/globalStyle/style.css"
+            prefWidth="1000" prefHeight="700">
+
+    <VBox alignment="CENTER" spacing="20" styleClass="login-container"
+          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" 
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        
+        <!-- Card de Login -->
+        <VBox alignment="CENTER" spacing="20" styleClass="login-card" 
+              prefWidth="400" prefHeight="500">
+            
+            <VBox alignment="CENTER" spacing="10">
+                <Label text="Sistema de Energéticos" styleClass="login-title"/>
+                <Label text="Faça login para continuar" styleClass="login-subtitle"/>
+            </VBox>
+
+            <VBox alignment="CENTER_LEFT" spacing="15" prefWidth="350">
+                <!-- Campo Usuário -->
+                <Label text="Usuário:" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                <TextField fx:id="txtUsuario" promptText="Digite seu usuário" 
+                          styleClass="login-field" onKeyPressed="#pressionarEnter"/>
+                
+                <!-- Campo Senha -->
+                <Label text="Senha:" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                <PasswordField fx:id="txtSenha" promptText="Digite sua senha" 
+                              styleClass="login-field" onKeyPressed="#pressionarEnter"/>
+                
+                <!-- Mensagem de Status -->
+                <Label fx:id="lblMensagem" prefHeight="40" wrapText="true"/>
+                
+                <!-- Botão Login -->
+                <Button fx:id="btnLogin" text="ENTRAR" onAction="#fazerLogin" 
+                       styleClass="login-button" defaultButton="true"/>
+                
+                <!-- Link Esqueci Senha -->
+                <Button text="Esqueci minha senha" onAction="#esqueciSenha" 
+                       styleClass="login-link"/>
+            </VBox>
+
+            <!-- Informações de Acesso -->
+            <VBox styleClass="login-info-box" spacing="10" prefWidth="350">
+                <Label text="👑 Usuários de Teste:" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Label text="• admin / 123456" style="-fx-text-fill: #cccccc;"/>
+                <Label text="• gerente / 123456" style="-fx-text-fill: #cccccc;"/>
+                <Label text="• usuario / 123456" style="-fx-text-fill: #cccccc;"/>
+            </VBox>
+        </VBox>
+    </VBox>
+</AnchorPane>

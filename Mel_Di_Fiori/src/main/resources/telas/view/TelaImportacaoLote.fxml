@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="crud_Colmeia.ImportacaoLoteController"
+      spacing="20" 
+      style="-fx-padding: 20; -fx-background-color: #0a0a0a;"
+      prefWidth="1000" prefHeight="700">
+
+    <Label text="📦 Importação em Lote - Energéticos" 
+           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #ffffff; -fx-effect: dropshadow(three-pass-box, rgba(255, 140, 0, 0.6), 8, 0, 0, 2);" />
+
+    <!-- Painel de Controle -->
+    <VBox spacing="15" style="-fx-background-color: #1a1a1a; -fx-padding: 20; -fx-background-radius: 10; -fx-border-color: #ff6b00; -fx-border-width: 2; -fx-border-radius: 10;">
+        <Label text="🚀 Controles de Importação" 
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" />
+
+        <HBox spacing="20" alignment="CENTER">
+            <Button text="📁 Selecionar Arquivo" onAction="#selecionarArquivo" 
+                    style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" />
+            
+            <Button text="📋 Baixar Modelo" onAction="#baixarModelo" 
+                    style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" />
+            
+            <Button text="🚀 Importar Registros" onAction="#importarRegistros" 
+                    style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" />
+            
+            <Button text="🧹 Limpar Log" onAction="#limparLog" 
+                    style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" />
+        </HBox>
+    </VBox>
+
+    <!-- Log do Sistema -->
+    <VBox spacing="10" VBox.vgrow="ALWAYS">
+        <Label text="📝 Log do Sistema - Importação em Lote" 
+               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" />
+
+        <TextArea fx:id="txtLogImportacao" prefRowCount="15" 
+                  style="-fx-background-color: #1a1a1a; -fx-text-fill: #00ff00; -fx-border-color: #ff6b00; -fx-font-family: 'Monospace'; -fx-font-size: 12px;"
+                  promptText="As mensagens do sistema aparecerão aqui..." />
+    </VBox>
+
+    <!-- Botão Voltar -->
+    <Button text="↩️ Voltar para Lista de Energéticos" onAction="#voltarParaLista" 
+            style="-fx-background-color: #7f8c8d; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 25;" />
+
+</VBox>

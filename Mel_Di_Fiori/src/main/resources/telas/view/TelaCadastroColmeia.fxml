@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="crud_Colmeia.ColmeiaCreateController"
+            prefWidth="600" prefHeight="650">
+    
+    <VBox spacing="15" alignment="TOP_LEFT" layoutX="20" layoutY="20" prefWidth="560">
+        <children>
+
+            <Label text="Cadastro de Energético" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #faf5f5;" />
+
+            <HBox spacing="10">
+                <Label text="Identificação:" style="-fx-min-width: 120;"/>
+                <TextField fx:id="txtNumero" promptText="Ex: Energético" prefWidth="300"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Data de Instalação:" style="-fx-min-width: 120;"/>
+                <DatePicker fx:id="dateInstalacao" prefWidth="300"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Localização:" style="-fx-min-width: 120;"/>
+                <TextField fx:id="txtLocalizacao" promptText="Ex: Setor A" prefWidth="300"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Tipo de Caixa:" style="-fx-min-width: 120;"/>
+                <ComboBox fx:id="comboTipo" promptText="Selecione o tipo" prefWidth="300"/>
+            </HBox>
+
+            <!-- NOVOS CAMPOS ADICIONADOS AQUI -->
+            <HBox spacing="10">
+                <Label text="Fornecedor:" style="-fx-min-width: 120;"/>
+                <ComboBox fx:id="comboFornecedor" promptText="Selecione fornecedor" prefWidth="300"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Preço Custo:" style="-fx-min-width: 120;"/>
+                <TextField fx:id="txtPrecoCusto" promptText="Ex: 5.50" prefWidth="300"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Preço Venda:" style="-fx-min-width: 120;"/>
+                <TextField fx:id="txtPrecoVenda" promptText="Ex: 8.90" prefWidth="300"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Número de Quadros:" style="-fx-min-width: 120;"/>
+                <Spinner fx:id="spinnerNumeroQuadros" prefWidth="100" />
+            </HBox>
+
+            <!-- NOVOS CAMPOS DE ESTOQUE -->
+            <HBox spacing="10">
+                <Label text="Estoque Atual:" style="-fx-min-width: 120;"/>
+                <Spinner fx:id="spinnerEstoqueAtual" prefWidth="100" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Estoque Mínimo:" style="-fx-min-width: 120;"/>
+                <Spinner fx:id="spinnerEstoqueMinimo" prefWidth="100" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Código Barras:" style="-fx-min-width: 120;"/>
+                <TextField fx:id="txtCodigoBarras" promptText="Ex: 7891234567890" prefWidth="300"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Situação:" style="-fx-min-width: 120;"/>
+                <ComboBox fx:id="comboSituacao" promptText="Selecione uma opção" prefWidth="300"/>
+            </HBox>
+
+            <VBox spacing="5">
+                <Label text="Observações:" />
+                <TextArea fx:id="txtObservacoes" prefRowCount="4" prefWidth="520"/>
+            </VBox>
+
+            <!-- Botões -->
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="Salvar" onAction="#salvarEnergetico" style="-fx-background-color: #6a6a6a; -fx-text-fill: white;"/>
+                <Button text="Limpar" onAction="#limparCampos" style="-fx-background-color: #6a6a6a; -fx-text-fill: white;"/>
+                <Button text="Preencher Exemplo" onAction="#preencherComDadosExemplo" style="-fx-background-color: #6a6a6a; -fx-text-fill: white;"/>
+            </HBox>
+
+        </children>
+
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20" />
+        </padding>
+    </VBox>
+</AnchorPane>

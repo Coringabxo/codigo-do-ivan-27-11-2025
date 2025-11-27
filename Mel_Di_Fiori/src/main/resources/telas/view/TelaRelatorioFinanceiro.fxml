@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="tela_main_controller.RelatorioFinanceiroController"
+      spacing="20" 
+      style="-fx-padding: 20; -fx-background-color: #0a0a0a;"
+      prefWidth="1000" prefHeight="700">
+
+    <Label text="📊 Relatórios Financeiros" 
+           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #ffffff; -fx-effect: dropshadow(three-pass-box, rgba(255, 140, 0, 0.6), 8, 0, 0, 2);" />
+
+    <!-- Painel de Geração de Relatórios -->
+    <VBox spacing="15" style="-fx-background-color: #1a1a1a; -fx-padding: 20; -fx-background-radius: 10; -fx-border-color: #ff6b00; -fx-border-width: 2; -fx-border-radius: 10;">
+        <Label text="Gerar Novo Relatório" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" />
+
+        <HBox spacing="20" alignment="CENTER_LEFT">
+            <VBox spacing="8">
+                <Label text="Título do Relatório:" style="-fx-text-fill: #ffffff;" />
+                <TextField fx:id="txtTituloRelatorio" promptText="Digite o título do relatório" prefWidth="300" />
+            </VBox>
+
+            <VBox spacing="8">
+                <Label text="Tipo de Relatório:" style="-fx-text-fill: #ffffff;" />
+                <ComboBox fx:id="comboTipoRelatorio" prefWidth="200" />
+            </VBox>
+        </HBox>
+
+        <HBox spacing="20" alignment="CENTER_LEFT">
+            <VBox spacing="8">
+                <Label text="Período - Início:" style="-fx-text-fill: #ffffff;" />
+                <DatePicker fx:id="dateInicio" />
+            </VBox>
+
+            <VBox spacing="8">
+                <Label text="Período - Fim:" style="-fx-text-fill: #ffffff;" />
+                <DatePicker fx:id="dateFim" />
+            </VBox>
+
+            <VBox spacing="8">
+                <Label text="⠀" style="-fx-text-fill: transparent;" />
+                <Button text="🔄 Gerar Relatório" onAction="#gerarRelatorio" 
+                        style="-fx-background-color: linear-gradient(to right, #ff6b00, #ff8c00); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" />
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <!-- Painel de Resultados -->
+    <HBox spacing="20" VBox.vgrow="ALWAYS">
+        <!-- Estatísticas -->
+        <VBox spacing="15" prefWidth="350">
+            <Label text="📈 Resultados Financeiros" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" />
+
+            <VBox spacing="10" style="-fx-background-color: #1a1a1a; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #2ecc71; -fx-border-width: 1;">
+                <HBox spacing="10">
+                    <Label text="Receita Total:" style="-fx-text-fill: #ffffff; -fx-font-weight: bold;" />
+                    <Label fx:id="labelReceitaTotal" text="R$ 0,00" style="-fx-text-fill: #2ecc71; -fx-font-weight: bold;" />
+                </HBox>
+
+                <HBox spacing="10">
+                    <Label text="Custo Total:" style="-fx-text-fill: #ffffff; -fx-font-weight: bold;" />
+                    <Label fx:id="labelCustoTotal" text="R$ 0,00" style="-fx-text-fill: #e74c3c; -fx-font-weight: bold;" />
+                </HBox>
+
+                <HBox spacing="10">
+                    <Label text="Lucro Bruto:" style="-fx-text-fill: #ffffff; -fx-font-weight: bold;" />
+                    <Label fx:id="labelLucroBruto" text="R$ 0,00" style="-fx-text-fill: #2ecc71; -fx-font-weight: bold;" />
+                </HBox>
+
+                <HBox spacing="10">
+                    <Label text="Margem de Lucro:" style="-fx-text-fill: #ffffff; -fx-font-weight: bold;" />
+                    <Label fx:id="labelMargemLucro" text="0,00%" style="-fx-text-fill: #f39c12; -fx-font-weight: bold;" />
+                </HBox>
+
+                <HBox spacing="10">
+                    <Label text="Total de Vendas:" style="-fx-text-fill: #ffffff; -fx-font-weight: bold;" />
+                    <Label fx:id="labelTotalVendas" text="0" style="-fx-text-fill: #3498db; -fx-font-weight: bold;" />
+                </HBox>
+            </VBox>
+
+            <VBox spacing="8">
+                <Label text="📋 Resumo Executivo:" style="-fx-text-fill: #ffffff; -fx-font-weight: bold;" />
+                <TextArea fx:id="txtResumoExecutivo" prefRowCount="6" prefWidth="350" 
+                         style="-fx-background-color: #1a1a1a; -fx-text-fill: #ffffff; -fx-border-color: #ff6b00; -fx-prompt-text-fill: #888888;" 
+                         promptText="O resumo executivo será gerado automaticamente..." />
+            </VBox>
+
+            <HBox spacing="15">
+                <Button text="💾 Salvar Relatório" onAction="#salvarRelatorio" 
+                        style="-fx-background-color: linear-gradient(to right, #27ae60, #2ecc71); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" />
+                <Button text="🧹 Limpar" onAction="#limparCampos" 
+                        style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" />
+            </HBox>
+        </VBox>
+
+        <!-- Lista de Relatórios Salvos -->
+        <VBox spacing="15" VBox.vgrow="ALWAYS">
+            <Label text="📁 Relatórios Armazenados" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" />
+
+            <TableView fx:id="tableRelatorios" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colTitulo" text="Título" prefWidth="200" />
+                    <TableColumn fx:id="colPeriodo" text="Período" prefWidth="150" />
+                    <TableColumn fx:id="colTipo" text="Tipo" prefWidth="120" />
+                    <TableColumn fx:id="colReceita" text="Receita" prefWidth="100" />
+                    <TableColumn fx:id="colLucro" text="Lucro" prefWidth="100" />
+                    <TableColumn fx:id="colDataCriacao" text="Data Criação" prefWidth="150" />
+                </columns>
+            </TableView>
+
+            <HBox spacing="15">
+                <Button text="👁️ Visualizar" onAction="#visualizarRelatorio" 
+                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 15;" />
+                <Button text="📤 Exportar" onAction="#exportarRelatorio" 
+                        style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 15;" />
+                <Button text="🗑️ Excluir" onAction="#excluirRelatorio" 
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 15;" />
+            </HBox>
+        </VBox>
+    </HBox>
+
+</VBox>
